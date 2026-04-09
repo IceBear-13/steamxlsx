@@ -108,7 +108,7 @@ def get_data(steam_id: str, fetch_market_values: bool = False):
                 "quality": _extract_quality(item, market_name),
                 "tradable": bool(item.get("tradable", 0)),
                 "marketable": bool(item.get("marketable", 0)),
-                "market_value": _get_market_value(market_name),
+                "market_value": _get_market_value(market_name) if bool(item.get("marketable", 0)) else 0
             }
             
             time.sleep(5)  # Add a delay to avoid rate-limiting by Steam market API.
