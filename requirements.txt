@@ -1,2 +1,3 @@
 steam_web_api
 dotenv
+urllib
