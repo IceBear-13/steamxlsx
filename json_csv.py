@@ -5,7 +5,7 @@ import requests
 
 
 def get_data(steam_id):
-    with urllib.request.urlopen(f"https://steamcommunity.com/inventory/{steam_id}/730/2?l=en&count=5000") as url:
+    with urllib.request.urlopen(f"https://steamcommunity.com/id/{steam_id}/inventory/json/730/2") as url:
         data = json.load(url)
     market_names = [item.get('market_hash_name') for item in data['descriptions']]
     
