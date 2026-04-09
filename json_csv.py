@@ -5,11 +5,17 @@ import requests
 
 
 def get_data(steam_id):
-    with urllib.request.urlopen(f"https://steamcommunity.com/id/{steam_id}/inventory/json/730/2") as url:
+    with urllib.request.urlopen(f"https://steamcommunity.com/inventory/{steam_id}/730/2") as url:
         data = json.load(url)
-    market_names = [item.get('market_hash_name') for item in data['descriptions']]
     
+    items = data['descriptions']
+    market_names = []
+    for item in items:
+        market_names.append(item['name'])
+        
+    print(market_names)
+
     df = pd.DataFrame({"Skins" : market_names})
     df.to_excel('output.xlsx', index=False)
 
-    
+# get_data("ripaimmm")

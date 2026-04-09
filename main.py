@@ -7,7 +7,7 @@ def run():
     KEY = settings.STEAM_API_KEY
 
     steam = Steam(KEY)
-    steam_id = input("Input Steam ID")
+    steam_id = input("Input Steam ID: ")
     def fetch_steam_profile(custom_url):
         dict = steam.users.get_steamid(custom_url)
         return dict['steamid']
